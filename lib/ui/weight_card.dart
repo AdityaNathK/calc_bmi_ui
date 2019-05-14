@@ -3,43 +3,36 @@ import './widget_utils.dart' show screenAwareSize;
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import './weight_slider.dart';
-class WeightCard extends StatefulWidget {
-  final int initialWeight;
 
-  const WeightCard({Key key, this.initialWeight}) : super(key: key);
+class WeightCard extends StatelessWidget {
+  final int weight;
+  final ValueChanged<int> onChanged;
 
-  @override
-  _WeightCardState createState() => _WeightCardState();
-}
-
-class _WeightCardState extends State<WeightCard> {
-  int weight;
-
-  @override
-  void initState() {
-    super.initState();
-    weight = widget.initialWeight ?? 70;
-  }
+  const WeightCard({Key key, this.weight = 70, this.onChanged})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: EdgeInsets.only(top: screenAwareSize(32.0, context)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            CardTitle("WEIGHT", subtitle: "(KG)"),
-            Expanded(
-              child: Center(
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: screenAwareSize(16.0, context)),
-                  child: _drawSlider(),
-                ),
+      margin: EdgeInsets.only(
+        left: screenAwareSize(16.0, context),
+        right: screenAwareSize(4.0, context),
+        top: screenAwareSize(4.0, context),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          CardTitle("WEIGHT", subtitle: "(kg)"),
+          Expanded(
+            child: Center(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: screenAwareSize(16.0, context)),
+                child: _drawSlider(),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -48,11 +41,13 @@ class _WeightCardState extends State<WeightCard> {
     return WeightBackground(
       child: LayoutBuilder(
         builder: (context, constraints) {
-          return WeightSlider(
+          return constraints.isTight
+              ? Container()
+              : WeightSlider(
             minValue: 30,
             maxValue: 110,
             value: weight,
-            onChanged: (val) => setState(() => weight = val),
+            onChanged: (val) => onChanged(val),
             width: constraints.maxWidth,
           );
         },
@@ -82,8 +77,9 @@ class WeightBackground extends StatelessWidget {
         ),
         SvgPicture.asset(
           "images/arrow.svg",
-          height: screenAwareSize(10.0, context),
+          height: screenAwareSize(25.0, context),
           width: screenAwareSize(18.0, context),
+          color: Colors.purpleAccent,
         ),
       ],
     );

@@ -3,8 +3,20 @@ import './widget_utils.dart';
 import './gender_card.dart';
 import './weight_card.dart';
 import './height_card.dart';
+import './gender_model.dart';
+import './input_summary_card.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  InputPageState createState() {
+    return new InputPageState();
+  }
+}
+
+class InputPageState extends State<HomePage> {
+  Gender gender = Gender.other;
+  int height = 170;
+  int weight = 70;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +26,11 @@ class HomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             _buildTitle(context),
+            InputSummaryCard(
+              gender: gender,
+              weight: weight,
+              height: height,
+            ),
             Expanded(child: _middleArea(context)),
             _bottomArea(context),
           ],
@@ -37,11 +54,17 @@ class HomePage extends StatelessWidget {
 
 // Bottom Part **********/
   Widget _bottomArea(BuildContext context) {
-    return Container(
-      alignment: Alignment.center,
-      height: screenAwareSize(108.0, context),
-      width: double.infinity,
-      child: Switch(value: true, onChanged: (val) {}),
+    return Padding(
+      padding: EdgeInsets.only(
+        left: screenAwareSize(16.0, context),
+        right: screenAwareSize(16.0, context),
+        bottom: screenAwareSize(22.0, context),
+        top: screenAwareSize(14.0, context),
+      ),
+      child: Placeholder(
+        fallbackHeight: screenAwareSize(52.0, context),
+        color: Theme.of(context).primaryColor,
+      ),
     );
   }
 
@@ -54,12 +77,21 @@ class HomePage extends StatelessWidget {
           left: 14.0, right: 14.0, top: screenAwareSize(32.0, context)),
       child: Row(
         children: <Widget>[
-          Expanded(child: HeightCard()),
+          Expanded(child: HeightCard(
+            height: height,
+            onChanged: (val) => setState(() => height = val),
+          ),),
           Expanded(
             child: Column(
               children: <Widget>[
-                Expanded(child: WeightCard()),
-                Expanded(child: GenderCard()),
+                Expanded(child: WeightCard(
+                  weight: weight,
+                  onChanged: (val) => setState(() => weight = val),
+                )),
+                Expanded(child: GenderCard(
+                  gender: gender,
+                  onChanged: (val) => setState(() => gender = val),
+                ),),
               ],
             ),
           ),

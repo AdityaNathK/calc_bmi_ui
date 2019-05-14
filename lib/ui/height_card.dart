@@ -3,23 +3,11 @@ import './height_picker.dart';
 import './widget_utils.dart';
 import 'package:flutter/material.dart';
 
-class HeightCard extends StatefulWidget {
+class HeightCard extends StatelessWidget {
   final int height;
-
-  const HeightCard({Key key, this.height}) : super(key: key);
-
-  @override
-  HeightCardState createState() => HeightCardState();
-}
-
-class HeightCardState extends State<HeightCard> {
-  int height;
-
-  @override
-  void initState() {
-    super.initState();
-    height = widget.height ?? 170;
-  }
+  final ValueChanged<int> onChanged;
+  const HeightCard({Key key, this.height = 170, this.onChanged})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +25,7 @@ class HeightCardState extends State<HeightCard> {
                   return HeightPicker(
                     widgetHeight: constraints.maxHeight,
                     height: height,
-                    onChange: (val) => setState(() => height = val),
+                    onChange: (val) => onChanged(val),
                   );
                 }),
               ),

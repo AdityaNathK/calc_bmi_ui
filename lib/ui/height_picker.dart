@@ -1,5 +1,4 @@
 import 'dart:math' as math;
-
 import './height_slider.dart';
 import './height_styles.dart';
 import './widget_utils.dart';
@@ -146,9 +145,10 @@ class _HeightPickerState extends State<HeightPicker> {
     return Align(
       alignment: Alignment.bottomCenter,
       child: SvgPicture.asset(
-        "images/male.svg",
+        "images/person.svg",
         height: personImageHeight,
         width: personImageHeight / 3,
+        color: Colors.purpleAccent.withOpacity(0.3),
       ),
     );
   }
