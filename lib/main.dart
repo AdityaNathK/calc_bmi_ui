@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'BMI Calculator',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        primaryColorDark: Colors.blue,
+        primarySwatch: Colors.deepPurple,
+        primaryColorDark: Colors.deepPurple,
         brightness: Brightness.light,
-        primaryColor: Colors.blue
+        primaryColor: Color(0xFF006FAF)
       ),
-      home: HomePage(), //Inputpage();
+      home: HomePage(), //Inputpage();,
     );
   }
 }

@@ -79,7 +79,7 @@ class WeightBackground extends StatelessWidget {
           "images/arrow.svg",
           height: screenAwareSize(25.0, context),
           width: screenAwareSize(18.0, context),
-          color: Colors.purpleAccent,
+          color: Color(0xFF006FAF),
         ),
       ],
     );

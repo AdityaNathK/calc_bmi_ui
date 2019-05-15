@@ -306,6 +306,7 @@ class PacmanIcon extends StatelessWidget {
         'images/pacman.svg',
         height: screenAwareSize(25.0, context),
         width: screenAwareSize(21.0, context),
+        color: Colors.white,
       ),
     );
   }

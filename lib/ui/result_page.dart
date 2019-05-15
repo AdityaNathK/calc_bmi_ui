@@ -1,5 +1,4 @@
 import './calculator.dart' as calculator;
-import './input_page_styles.dart';
 import './gender_model.dart';
 import 'package:flutter/material.dart';
 
@@ -103,10 +102,7 @@ class ResultCard extends StatelessWidget {
         child: Container(
           width: double.infinity,
           child: Column(children: [
-            Text(
-              '🔥',
-              style: TextStyle(fontSize: 80.0),
-            ),
+            Padding(padding: EdgeInsets.all(20.0),),
             Text(
               bmi.toStringAsFixed(1),
               style: TextStyle(fontSize: 140.0, fontWeight: FontWeight.bold),

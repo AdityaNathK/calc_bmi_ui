@@ -47,17 +47,29 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Stack(
       children: <Widget>[
         Scaffold(
-          body: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          body: Stack(
+            fit: StackFit.expand,
             children: <Widget>[
-              _buildTitle(context),
-              InputSummaryCard(
-                gender: gender,
-                weight: weight,
-                height: height,
+              Container(
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Color(0xFF014289), Color(0xFFefefef)])),
               ),
-              Expanded(child: _buildCards(context)),
-              _buildBottom(context),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _buildTitle(context),
+                  InputSummaryCard(
+                    gender: gender,
+                    weight: weight,
+                    height: height,
+                  ),
+                  Expanded(child: _buildCards(context)),
+                  _buildBottom(context),
+                ],
+              )
             ],
           ),
         ),
@@ -75,7 +87,8 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
       child: Center(
         child: Text(
           "BMI CALCULATOR",
-          style: new TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+          style: new TextStyle(
+              color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
         ),
       ),
     );
@@ -161,11 +174,11 @@ class InputSummaryCard extends StatelessWidget {
         height: screenAwareSize(32.0, context),
         child: Row(
           children: <Widget>[
-            Expanded(child: _genderText()),
+            Expanded(child: _text("${height}cm")),
             _divider(),
             Expanded(child: _text("${weight}kg")),
             _divider(),
-            Expanded(child: _text("${height}cm")),
+            Expanded(child: _genderText()),
           ],
         ),
       ),
@@ -174,8 +187,8 @@ class InputSummaryCard extends StatelessWidget {
 
   Widget _genderText() {
     String genderText = gender == Gender.other
-        ? '-'
-        : (gender == Gender.male ? 'Male' : 'Female');
+        ? 'UNISEX'
+        : (gender == Gender.male ? 'MALE' : 'FEMALE');
     return _text(genderText);
   }
 
@@ -183,9 +196,9 @@ class InputSummaryCard extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        color: Color.fromRGBO(143, 144, 156, 1.0),
-        fontSize: 15.0,
-      ),
+          color: Color(0xFF006FAF),
+          fontSize: 15.0,
+          fontWeight: FontWeight.bold),
       textAlign: TextAlign.center,
     );
   }
