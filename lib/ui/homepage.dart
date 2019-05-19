@@ -47,6 +47,16 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
     return Stack(
       children: <Widget>[
         Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            title: Text(
+              "BMI CALCULATOR",
+              style: new TextStyle(
+                  color: Color(0xFFFFFFFF),// 183059
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
           body: Stack(
             fit: StackFit.expand,
             children: <Widget>[
@@ -55,12 +65,12 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [Color(0xFF014289), Color(0xFFefefef)])),
+                        colors: [Color(0xFFf6f7f8), Color(0xFFf6f7f8)])),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _buildTitle(context),
+                  Padding(padding: EdgeInsets.all(5.0),),
                   InputSummaryCard(
                     gender: gender,
                     weight: weight,
@@ -75,22 +85,6 @@ class HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         TransitionDot(animation: _submitAnimationController),
       ],
-    );
-  }
-
-  Widget _buildTitle(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: 24.0,
-        top: screenAwareSize(56.0, context),
-      ),
-      child: Center(
-        child: Text(
-          "BMI CALCULATOR",
-          style: new TextStyle(
-              color: Colors.white, fontSize: 25.0, fontWeight: FontWeight.bold),
-        ),
-      ),
     );
   }
 
@@ -169,7 +163,7 @@ class InputSummaryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(screenAwareSize(16.0, context)),
+      margin: EdgeInsets.all(screenAwareSize(10.0, context)),
       child: SizedBox(
         height: screenAwareSize(32.0, context),
         child: Row(
@@ -196,7 +190,7 @@ class InputSummaryCard extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-          color: Color(0xFF006FAF),
+          color: Color(0xFF183059),
           fontSize: 15.0,
           fontWeight: FontWeight.bold),
       textAlign: TextAlign.center,
@@ -206,7 +200,7 @@ class InputSummaryCard extends StatelessWidget {
   Widget _divider() {
     return Container(
       width: 1.0,
-      color: Color.fromRGBO(151, 151, 151, 0.1),
+      color: Color(0xFF210124).withOpacity(0.2),
     );
   }
 }

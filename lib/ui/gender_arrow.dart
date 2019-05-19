@@ -25,7 +25,7 @@ class GenderArrow extends AnimatedWidget {
             "images/navigation.svg",
             height: _arrowLength(context),
             width: _arrowLength(context),
-            color: Color(0xFF006FAF),
+            color: Color(0xFF183059).withOpacity(0.8),
           ),
         ),
       ),

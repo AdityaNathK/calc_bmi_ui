@@ -38,8 +38,8 @@ class GenderIconTranslated extends StatelessWidget {
         height: _iconSize(context),
         width: _iconSize(context),
         color: isSelected
-            ? Color.fromRGBO(255, 99, 71, 1.0)
-            : Color(0xFF006FAF),
+            ? Color(0xFFfc814a)
+            : Color(0xFF183059),
       ),
     );
 

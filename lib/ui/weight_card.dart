@@ -8,7 +8,7 @@ class WeightCard extends StatelessWidget {
   final int weight;
   final ValueChanged<int> onChanged;
 
-  const WeightCard({Key key, this.weight = 70, this.onChanged})
+  const WeightCard({Key key, this.weight = 50, this.onChanged})
       : super(key: key);
 
   @override
@@ -79,7 +79,7 @@ class WeightBackground extends StatelessWidget {
           "images/arrow.svg",
           height: screenAwareSize(25.0, context),
           width: screenAwareSize(18.0, context),
-          color: Color(0xFF006FAF),
+          color: Color(0xFF183059).withOpacity(0.8),
         ),
       ],
     );

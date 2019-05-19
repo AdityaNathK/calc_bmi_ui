@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import './ui/homepage.dart';
+import './ui/splash.dart';
+
 
 
 void main() => runApp(MyApp());
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         primaryColorDark: Colors.deepPurple,
         brightness: Brightness.light,
-        primaryColor: Color(0xFF006FAF)
+        primaryColor: Color(0xFF183059)
       ),
-      home: HomePage(), //Inputpage();,
+      home: SplashScreen(), //Inputpage();
     );
   }
 }

@@ -42,7 +42,7 @@ class SliderLabel extends StatelessWidget {
         "$height",
         style: TextStyle(
           fontSize: selectedLabelFontSize,
-          color: Theme.of(context).primaryColor,
+            color: Color(0xFFfc814a),
           fontWeight: FontWeight.w600,
         ),
       ),

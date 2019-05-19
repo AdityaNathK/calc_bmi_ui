@@ -148,7 +148,7 @@ class _HeightPickerState extends State<HeightPicker> {
         "images/person.svg",
         height: personImageHeight,
         width: personImageHeight / 3,
-        color: Color(0xFF006FAF).withOpacity(0.4),
+        color: Color(0xFF183059).withOpacity(0.4),
       ),
     );
   }
