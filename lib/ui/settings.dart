@@ -103,15 +103,17 @@ class _SettingsPageState extends State<SettingsPage> {
                 color: Colors.grey,
                 height: 1.5,
               ),
-              Container(
-                color: Colors.grey.withOpacity(0.1),
-                padding: EdgeInsets.all(25.0),
-                child: Text(
-                  "This App user the follwing dependencies: \n\n \t "
-                      "1. flutter_svg: ^0.12.4+1 : for integrating svg into flutter \n\n \t "
-                      "2. firebase_admob: ^0.5.2 : for working with google admob",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
-                  textAlign: TextAlign.left,
+              Card(
+                child: Container(
+                  color: Colors.grey.withOpacity(0.1),
+                  padding: EdgeInsets.all(25.0),
+                  child: Text(
+                    "This App user the follwing dependencies: \n\n \t "
+                        "1. flutter_svg: ^0.12.4+1 : for integrating svg into flutter \n\n \t "
+                        "2. firebase_admob: ^0.5.2 : for working with google admob",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.0),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
               ),
               Padding(
